@@ -2,34 +2,160 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>About Last Night...</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <title>About Last Night...</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Caveat|Rock+Salt" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
-	<h1> About Last Night... </h1>
+    <h1 class="text"> About Last Night... </h1>
+    <div class="jumbotron" id="jumbo1">
+        <div class="col-md-12">
+            <div class="row">
+                <h3 class="display-3" id="cityLabel"></h3>
+                <p class="tempInput"> </p>
+                <hr class="my-4">
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron" id="jumbo2">
+        <div class="col-md-12">
+            <div class="row">
+                <section id="blog1" class=" blog1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="blog-post wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="post-img">
+                                                <img class="img-responsive" src="bed.jpg" alt="image">
+                                                <div class="date text-center"><span>15</span>
+                                                    <br>Dec</div>
+                                                <ul class="list-inline post-info">
+                                                    <li><i class="lnr lnr-eye"></i> $325</li>
+                                                </ul>
+                                            </div>
+                                            <div class="blog-details">
+                                                <h4 class="media-heading">Motel 6</h4>
+                                                <p>Comes with a luxury pool and spa.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="blog-post wow fadeInUp" data-wow-delay="0.4s">
+                                            <div class="post-img">
+                                                <img class="img-responsive" src="hotel.jpg" alt="image">
+                                                <div class="date text-center"><span>15</span>
+                                                    <br>Dec</div>
+                                                <ul class="list-inline post-info">
+                                                    <li><i class="lnr lnr-eye"></i> $325</li>
+                                                </ul>
+                                            </div>
+                                            <div class="blog-details">
+                                                <h4 class="media-heading">Hotel: Holiday Inn</h4>
+                                                <p>Our luxurious rooms also come with complimentary wifi.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-xs-12" id="thirdTab">
+                                        <div class="blog-post wow fadeInUp" data-wow-delay="0.6s">
+                                            <div class="post-img">
+                                                <img class="img-responsive" src="bed.jpg" alt="image">
+                                                <div class="date text-center"><span>15</span>
+                                                    <br>Dec</div>
+                                                <ul class="list-inline post-info">
+                                                    <li><i class="lnr lnr-eye"></i> $325</li>
+                                                </ul>
+                                            </div>
+                                            <div class="blog-details">
+                                                <h4 class="media-heading">Input hotel name</h4>
+                                                <p> Check out our new hotel suites.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+    var config = {
+        apiKey: "AIzaSyCJex1acwpZx-jydhhdr0UAkFWqK0uT_v0",
+        authDomain: "project1-9ab9c.firebaseapp.com",
+        databaseURL: "https://project1-9ab9c.firebaseio.com",
+        projectId: "project1-9ab9c",
+        storageBucket: "project1-9ab9c.appspot.com",
+        messagingSenderId: "522865655856"
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script> 
-    var city="phoenix";
-    var state="arizona";
+    }
+    firebase.initializeApp(config);
+    var database = firebase.database();
+    var ref = firebase.database().ref();
+    ref.on('child_added', function(childSnapshot, prevChildKey) {
+        console.log(childSnapshot);
+    });
+    console.log(ref);
+    /*if (location){*/
+    var city = search;
+    var state = "Nevada";
+    var weatherURL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%2C%20" + state + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+    $.ajax({
+        url: weatherURL,
+        method: "GET"
+    }).done(function(results) {
+        console.log("it worked");
+        //console.log(results.query.results.channel.item.condition.temp);
 
-    var queryURL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%2C%20" + state + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+        var currentTemp = results.query.results.channel.item.condition.temp;
+
+        $(".tempInput").html(currentTemp + "&#176;" + " F");
+    });
+    var apikeyh = "n8g8ckeyquhmd6j5trnnvgcn";
+    var hotelsURL = "http://api.hotwire.com/v1/deal/hotel?dest=" + city + "&apikey=" + apikeyh + "&limit=1&format=jsonp";
+    $.ajax({
+        url: hotelsURL,
+        method: "GET"
+    }).done(function(results) {
+        console.log("working");
+        console.log(results);
+    });
 
     $.ajax({
-    	url: queryURL,
-    	method: "GET"	
-    }).done (function(results){
-    	console.log("it worked");
-    });	
+        url: hotelsURL,
+        method: 'GET',
+        crossDomain: true,
+        dataType: 'jsonp',
+        jsonpCallback: 'test',
+        success: function(res) { console.log('new', res); },
+        error: function(error) { console.log('error'); },
+        beforeSend: setHeader
+    });
 
+    function test(r) {
+        console.log(r);
+    }
 
-    console.log(results);
-
-
-
-	</script>
+    function setHeader(xhr) {
+        xhr.setRequestHeader('Authorization', apikeyh);
+        xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+        xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET');
+    }
+    var search = $("#exampleText").val();
+    console.log(city);
+    $("#cityLabel").html(city);
+    </script>
 </body>
+
 </html>

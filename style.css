@@ -1,9 +1,79 @@
-body{
-	background-image: url("citylights.jpg");
+body {
+
+   background-image: url("citylights.jpg");
+    background-repeat: no-repeat;
 }
-h1{
-	color:white;
-	font-size: 55px;
-	text-align: center;
-	margin-top: 95px;
+
+#mainText {
+    font-family: 'Caveat', cursive;
+    color: #FFFFFF ;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#submitBtn {
+    background-color: #545454 ;
+    border-color: #545454 ;
+    opacity: 0.5;
+}
+
+
+#jumbo1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 95px;
+    color: #666;
+    height: 120px;
+    width: 700px;
+    margin-left: 345px;
+    margin-top: 40px;
+
+}
+
+#cityLabel {
+    margin-top: -20px;
+    margin-left: 30px;
+    font-size: 75px;
+}
+
+#tempInput {
+    font-size: 60px;
+    color: #666;
+    margin-left: 450px;
+    margin-top: -95px;
+    text-align: center;
+}
+
+#jumbo2 {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+    height: 330px;
+    width: 900px;
+    margin-left: 240px;
+}
+#jumbo3 {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+    height: 360px;
+    width: 900px;
+    margin-left: 240px;
+}
+#jumbo4 {
+    font-family: 'Caveat', cursive;
+    color: #666;
+    height: 150px;
+    width: 900px;
+    margin-left: 240px;
+}
+.relTitle{
+    text-align: center;
+    font-size: 30px;
+    margin-top: -20px;
+}
+.inputSearch{
+    margin-left: 30px;
+    font-size: 25px;
+}
+
+.hidden {
+    display: none;
 }
